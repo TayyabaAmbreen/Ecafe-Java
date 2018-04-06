@@ -362,6 +362,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+         if (jTable4.getSelectedRow()==-1)
+        {
+            JOptionPane.showMessageDialog(null, "No item selected to be added to table");
+        }
+        
+        else
+        {
       int s=jTable4.getSelectedRow();
       String str=(String)jTable4.getValueAt(s,0);
       String total=jLabel5.getText();
@@ -370,13 +378,22 @@ public class MainJFrame extends javax.swing.JFrame {
       model.addRow(new Object[]{str});
       t=t+Double.parseDouble((String)jTable4.getValueAt(s,1));
       jLabel5.setText(Double.toString(t));
+      
       //System.out.println(t);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         int s=jTable2.getSelectedRow();
+        if (jTable4.getSelectedRow()==-1)
+        {
+            JOptionPane.showMessageDialog(null, "No item selected to be removed from table");
+        }
+        
+        else
+        {
+            int s=jTable2.getSelectedRow();
          String str=(String)jTable2.getValueAt(s,0); 
          String total=jLabel5.getText();
          Double t=Double.parseDouble(total);
@@ -395,18 +412,39 @@ public class MainJFrame extends javax.swing.JFrame {
          //System.out.println(jTable4.getRowCount() );      
          jLabel5.setText(Double.toString(t));
         // System.out.println(total);
+        }
+         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-          new Login(jTable2,jLabel5.getText(),jTextField1.getText()).setVisible(true);
-          this.dispose();//to close the current jframe
+        if(jTable2.getModel().getRowCount()==0 )
+            {
+                JOptionPane.showMessageDialog(null, "You have not placed any order to pick that up. ");
+            }  
+        else if(jTextField1.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "You have not mentioined pick up time ");
+        }
+        else
+        {
+            new Login(jTable2,jLabel5.getText(),jTextField1.getText()).setVisible(true);
+            this.dispose();//to close the current jframe
+        }
+          
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         if(jTable2.getModel().getRowCount()==0)
+            {
+                JOptionPane.showMessageDialog(null, "You have not placed any order to be delivered to you. ");
+            }  
+        else
+        {
          new Login(jTable2,jLabel5.getText(),jTextField1.getText()).setVisible(true);
          this.dispose();//to close the current jframe
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
